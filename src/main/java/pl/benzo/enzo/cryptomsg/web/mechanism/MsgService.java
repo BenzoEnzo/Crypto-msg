@@ -12,6 +12,7 @@ import pl.benzo.enzo.cryptomsg.web.transform.mapper.Mapper;
 import pl.benzo.enzo.cryptomsg.web.transform.mapper.ReadMsgMapper;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 @Service
 public class MsgService implements MsgApi {
@@ -19,6 +20,9 @@ public class MsgService implements MsgApi {
 
     public MsgService(MsgRepository msgRepository){
         this.msgRepository = msgRepository;
+    }
+    public List<Msg> tmpGetAll(){
+        return msgRepository.findAll();
     }
     @Override
     public CreateMsgResponse createCryptoMessage(CreateMsgRequest createMsgRequest) {
@@ -40,4 +44,7 @@ public class MsgService implements MsgApi {
         } else return null;
     }
 
+    public void cleanDatabase(){
+        msgRepository.deleteAll();
+    }
 }
