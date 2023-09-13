@@ -5,6 +5,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import pl.benzo.enzo.cryptomsg.external.KeyApi;
 import pl.benzo.enzo.cryptomsg.web.api.MsgApi;
 import pl.benzo.enzo.cryptomsg.web.mechanism.Msg;
 import pl.benzo.enzo.cryptomsg.web.mechanism.MsgService;
@@ -19,8 +20,10 @@ import java.util.List;
 @RequestMapping("/api/msg")
 public class MsgController {
     private final MsgService msgService;
-    public MsgController(MsgService msgService) {
+    private final KeyApi keyApi;
+    public MsgController(MsgService msgService, KeyApi keyApi) {
         this.msgService = msgService;
+        this.keyApi = keyApi;
     }
 
     @GetMapping
@@ -29,6 +32,17 @@ public class MsgController {
                 .status(HttpStatus.OK)
                 .body(msgService.tmpGetAll());
     }
+
+    @GetMapping(value = "/read-token")
+    public ResponseEntity<String> getSecurityKey(){
+        return keyApi.getKey();
+    }
+
+    @PostMapping(value = "/verify-token")
+    public ResponseEntity<Boolean> validateToken(@RequestBody String securityKey){
+        return keyApi.validateKey(securityKey);
+    }
+
     @PostMapping(value = "/create", produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<CreateMsgResponse> create(@RequestBody CreateMsgRequest createMsgRequest) {
         return ResponseEntity

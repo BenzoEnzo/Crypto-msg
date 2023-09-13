@@ -11,12 +11,13 @@ import org.springframework.stereotype.Component;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.reactive.function.client.WebClient;
+import pl.benzo.enzo.cryptomsg.external.KeyApi;
 
 import java.util.List;
 
 @Slf4j
 @Component
-public class CryptoKeyClient {
+public class CryptoKeyClient implements KeyApi {
 
     private WebClient webClient;
 
@@ -29,16 +30,20 @@ public class CryptoKeyClient {
                 .build();
     }
 
-    public ResponseEntity<List<String>> getKey(){
-        return ResponseEntity
-                .status(HttpStatus.OK)
-                .body(keyService.getAll());
+    public ResponseEntity<String> getKey(){
+        return webClient.get()
+                .retrieve()
+                .bodyToMono(String.class)
+                .map(responseBody -> ResponseEntity.ok().body(responseBody))
+                .block();
+
     }
 
     public ResponseEntity<Boolean> validateKey(String encryptedKey){
-        return ResponseEntity
-                .status(HttpStatus.OK)
-                .body(keyService.validateSecurityKey(encryptedKey));
+        return webClient.get()
+                .retrieve()
+                .bodyToMono(Boolean.class)
+                .map(responseBody -> ResponseEntity.ok().body(responseBody))
+                .block();
     }
-
 }
