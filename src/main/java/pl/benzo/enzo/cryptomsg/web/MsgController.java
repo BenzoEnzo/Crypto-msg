@@ -1,12 +1,10 @@
 package pl.benzo.enzo.cryptomsg.web;
 
 
-import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import pl.benzo.enzo.cryptomsg.external.KeyApi;
 import pl.benzo.enzo.cryptomsg.web.mechanism.Msg;
 import pl.benzo.enzo.cryptomsg.web.mechanism.MsgApi;
 import pl.benzo.enzo.cryptomsg.web.transform.dto.request.CreateMsgRequest;
@@ -18,9 +16,12 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/msg")
-@RequiredArgsConstructor
 public class MsgController {
     private final MsgApi msgApi;
+
+    public MsgController(MsgApi msgApi) {
+        this.msgApi = msgApi;
+    }
 
     @GetMapping
     public ResponseEntity<List<Msg>> listOfAllTemporary(){

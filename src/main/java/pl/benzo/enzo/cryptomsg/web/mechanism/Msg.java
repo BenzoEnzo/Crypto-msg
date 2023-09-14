@@ -5,6 +5,7 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
 import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.index.Indexed;
 import org.springframework.data.mongodb.core.mapping.Document;
 import pl.benzo.enzo.cryptomsg.external.dto.KeyDto;
 
@@ -23,7 +24,8 @@ public class Msg {
     private String key;
     private LocalDateTime sendAt;
     private LocalDateTime openAt;
-    private LocalDateTime deleteIn;
+    @Indexed(expireAfterSeconds = 0)
+    private LocalDateTime deleteAt;
     private boolean isSuccess;
     private int deleteAfter;
 
@@ -37,5 +39,8 @@ public class Msg {
         this.content = content;
         this.openAt = openAt;
         this.isSuccess = isSuccess;
+    }
+    public Msg() {
+
     }
 }

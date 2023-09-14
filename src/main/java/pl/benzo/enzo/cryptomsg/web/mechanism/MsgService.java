@@ -30,8 +30,7 @@ public class MsgService implements MsgApi {
         Msg tmpMsg = createMsgMapper.requestMapper(createMsgRequest);
         tmpMsg.setDeleteIn(TimeConverter.addMinutes(LocalDateTime.now(), tmpMsg.getDeleteAfter()));
         msgRepository.save(tmpMsg);
-        final CreateMsgResponse createMsgResponse = createMsgMapper.responseMapper(tmpMsg);
-        return createMsgResponse;
+        return createMsgMapper.responseMapper(tmpMsg);
     }
 
     @Override
@@ -42,6 +41,7 @@ public class MsgService implements MsgApi {
           msg.setSuccess(true);
           msg.setOpenAt(LocalDateTime.now());
           final ReadMsgResponse readMsgResponse = readMsgMapper.responseMapper(msg);
+          msgRepository.deleteById(msg.getId());
           return readMsgResponse;
       } else throw new IllegalArgumentException("Msg doesnt exist");
     }

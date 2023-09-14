@@ -11,8 +11,5 @@ public class MsgData {
     public MsgData(MsgService msgService) {
         this.msgService = msgService;
     }
-    @Scheduled(fixedRate = 20000000)
-    private void cleaning(){
-        msgService.cleanDatabase();
-    }
+
 }
