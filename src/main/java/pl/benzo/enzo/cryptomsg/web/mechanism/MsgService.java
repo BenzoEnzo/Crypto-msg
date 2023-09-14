@@ -30,7 +30,8 @@ public class MsgService implements MsgApi {
         Msg tmpMsg = createMsgMapper.requestMapper(createMsgRequest);
         final LocalDateTime timeNow = LocalDateTime.now();
         tmpMsg.setSendAt(timeNow);
-        tmpMsg.setDeleteAt(TimeConverter.addMinutes(timeNow,tmpMsg.getDeleteAfter()));
+        final LocalDateTime deleteIn = TimeConverter.addMinutes(timeNow, tmpMsg.getDeleteAfter());
+        tmpMsg.setDeleteAt(deleteIn);
         msgRepository.save(tmpMsg);
         return createMsgMapper.responseMapper(tmpMsg);
     }
