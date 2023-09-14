@@ -7,8 +7,9 @@ import org.springframework.data.mongodb.core.index.Indexed;
 import org.springframework.data.mongodb.core.mapping.Document;
 import java.time.LocalDateTime;
 
-@Document(collection = "Msgs")
+
 @AllArgsConstructor
+@Document
 public class Msg {
 
     @Id
