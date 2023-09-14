@@ -33,7 +33,6 @@ public class CryptoKeyClient implements KeyApi {
                 .bodyToMono(String.class)
                 .map(responseBody -> ResponseEntity.ok().body(responseBody))
                 .block();
-
     }
 
     public ResponseEntity<Boolean> validateKey(String encryptedKey){

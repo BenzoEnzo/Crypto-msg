@@ -4,5 +4,5 @@ import pl.benzo.enzo.cryptomsg.external.dto.KeyDto;
 
 import java.time.LocalDateTime;
 
-public record CreateMsgRequest(KeyDto securityKey, String content, LocalDateTime send) {
+public record CreateMsgRequest(String content, LocalDateTime send, int deleteAfterTime) {
 }

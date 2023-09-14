@@ -8,16 +8,14 @@ import java.time.LocalDateTime;
 
 public class CreateMsgMapper implements Mapper<CreateMsgRequest,CreateMsgResponse> {
 
-    public Msg entityMapper(CreateMsgResponse createMsgResponse) {
-        return new Msg(createMsgResponse.securityKey().isCorrect(),createMsgResponse.content(), createMsgResponse.send());
-    }
-
-    public CreateMsgResponse responseMapper(CreateMsgRequest createMsgRequest){
-        return new CreateMsgResponse(createMsgRequest.securityKey(), createMsgRequest.content(), createMsgRequest.send());
-    }
-
+    @Override
     public Msg requestMapper(CreateMsgRequest createMsgRequest) {
-        return null;
+        return new Msg(createMsgRequest.content(),createMsgRequest.send(),createMsgRequest.deleteAfterTime());
+    }
+
+    @Override
+    public CreateMsgResponse responseMapper(Msg msg) {
+        return new CreateMsgResponse(msg.getId());
     }
 
 }

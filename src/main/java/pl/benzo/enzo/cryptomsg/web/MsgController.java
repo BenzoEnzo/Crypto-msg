@@ -1,14 +1,14 @@
 package pl.benzo.enzo.cryptomsg.web;
 
 
+import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import pl.benzo.enzo.cryptomsg.external.KeyApi;
-import pl.benzo.enzo.cryptomsg.web.api.MsgApi;
 import pl.benzo.enzo.cryptomsg.web.mechanism.Msg;
-import pl.benzo.enzo.cryptomsg.web.mechanism.MsgService;
+import pl.benzo.enzo.cryptomsg.web.mechanism.MsgApi;
 import pl.benzo.enzo.cryptomsg.web.transform.dto.request.CreateMsgRequest;
 import pl.benzo.enzo.cryptomsg.web.transform.dto.request.ReadMsgRequest;
 import pl.benzo.enzo.cryptomsg.web.transform.dto.response.CreateMsgResponse;
@@ -18,43 +18,29 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/msg")
+@RequiredArgsConstructor
 public class MsgController {
-    private final MsgService msgService;
-    private final KeyApi keyApi;
-    public MsgController(MsgService msgService, KeyApi keyApi) {
-        this.msgService = msgService;
-        this.keyApi = keyApi;
-    }
+    private final MsgApi msgApi;
 
     @GetMapping
     public ResponseEntity<List<Msg>> listOfAllTemporary(){
         return ResponseEntity
                 .status(HttpStatus.OK)
-                .body(msgService.tmpGetAll());
-    }
-
-    @GetMapping(value = "/read-token")
-    public ResponseEntity<String> getSecurityKey(){
-        return keyApi.getKey();
-    }
-
-    @PostMapping(value = "/verify-token")
-    public ResponseEntity<Boolean> validateToken(@RequestBody String securityKey){
-        return keyApi.validateKey(securityKey);
+                .body(msgApi.tmpGetAll());
     }
 
     @PostMapping(value = "/create", produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<CreateMsgResponse> create(@RequestBody CreateMsgRequest createMsgRequest) {
         return ResponseEntity
                 .status(HttpStatus.CREATED)
-                .body( msgService.createCryptoMessage(createMsgRequest));
+                .body(msgApi.createCryptoMessage(createMsgRequest));
     }
 
     @PostMapping(value = "/read", produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<ReadMsgResponse> read(@RequestBody ReadMsgRequest readMsgRequest) {
         return ResponseEntity
                 .status(HttpStatus.OK)
-                .body(msgService.readCryptoMessage(readMsgRequest));
+                .body(msgApi.readCryptoMessage(readMsgRequest));
 
     }
 }

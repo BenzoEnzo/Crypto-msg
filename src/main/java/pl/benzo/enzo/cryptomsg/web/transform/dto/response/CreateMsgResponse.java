@@ -5,6 +5,6 @@ import pl.benzo.enzo.cryptomsg.external.dto.KeyDto;
 import java.time.LocalDateTime;
 import java.util.Objects;
 
-public record CreateMsgResponse(KeyDto securityKey,String content, LocalDateTime send) {
+public record CreateMsgResponse(String id) {
 
 }

@@ -2,17 +2,17 @@ package pl.benzo.enzo.cryptomsg.web.mechanism;
 
 
 import org.springframework.stereotype.Service;
-import pl.benzo.enzo.cryptomsg.web.api.MsgApi;
+import pl.benzo.enzo.cryptomsg.web.conditions.TimeConverter;
 import pl.benzo.enzo.cryptomsg.web.transform.dto.request.CreateMsgRequest;
 import pl.benzo.enzo.cryptomsg.web.transform.dto.request.ReadMsgRequest;
 import pl.benzo.enzo.cryptomsg.web.transform.dto.response.CreateMsgResponse;
 import pl.benzo.enzo.cryptomsg.web.transform.dto.response.ReadMsgResponse;
 import pl.benzo.enzo.cryptomsg.web.transform.mapper.CreateMsgMapper;
-import pl.benzo.enzo.cryptomsg.web.transform.mapper.Mapper;
 import pl.benzo.enzo.cryptomsg.web.transform.mapper.ReadMsgMapper;
 
 import java.time.LocalDateTime;
 import java.util.List;
+import java.util.Objects;
 
 @Service
 public class MsgService implements MsgApi {
@@ -27,21 +27,23 @@ public class MsgService implements MsgApi {
     @Override
     public CreateMsgResponse createCryptoMessage(CreateMsgRequest createMsgRequest) {
         final CreateMsgMapper createMsgMapper = new CreateMsgMapper();
-        final CreateMsgResponse createMsgResponse = createMsgMapper.responseMapper(createMsgRequest);
-        if(createMsgResponse.securityKey().isCorrect()){
-            final Msg msg = createMsgMapper.entityMapper(createMsgResponse);
-            msgRepository.save(msg);
-        }
+        Msg tmpMsg = createMsgMapper.requestMapper(createMsgRequest);
+        tmpMsg.setDeleteIn(TimeConverter.addMinutes(LocalDateTime.now(), tmpMsg.getDeleteAfter()));
+        msgRepository.save(tmpMsg);
+        final CreateMsgResponse createMsgResponse = createMsgMapper.responseMapper(tmpMsg);
         return createMsgResponse;
     }
 
     @Override
     public ReadMsgResponse readCryptoMessage(ReadMsgRequest readMsgRequest){
-        final Msg msg = msgRepository.findById(readMsgRequest.id()).orElse(null);
-        if(readMsgRequest.securityKey().isCorrect() && msg != null){
-        final ReadMsgMapper readMsgMapper = new ReadMsgMapper();
-        return readMsgMapper.responseMapper(msg);
-        } else return null;
+      final ReadMsgMapper readMsgMapper = new ReadMsgMapper();
+      Msg msg = msgRepository.findById(readMsgRequest.id()).orElse(null);
+      if(Objects.nonNull(msg)){
+          msg.setSuccess(true);
+          msg.setOpenAt(LocalDateTime.now());
+          final ReadMsgResponse readMsgResponse = readMsgMapper.responseMapper(msg);
+          return readMsgResponse;
+      } else throw new IllegalArgumentException("Msg doesnt exist");
     }
 
     public void cleanDatabase(){
