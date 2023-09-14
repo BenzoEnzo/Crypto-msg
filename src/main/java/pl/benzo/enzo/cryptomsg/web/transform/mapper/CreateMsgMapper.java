@@ -10,12 +10,12 @@ public class CreateMsgMapper implements Mapper<CreateMsgRequest,CreateMsgRespons
 
     @Override
     public Msg requestMapper(CreateMsgRequest createMsgRequest) {
-        return new Msg(createMsgRequest.content(),createMsgRequest.send(),createMsgRequest.deleteAfterTime());
+        return new Msg(createMsgRequest.content(),createMsgRequest.deleteAfterTime());
     }
 
     @Override
     public CreateMsgResponse responseMapper(Msg msg) {
-        return new CreateMsgResponse(msg.getId());
+        return new CreateMsgResponse(msg.getId(),msg.getSendAt());
     }
 
 }

@@ -7,10 +7,8 @@ import lombok.Setter;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.index.Indexed;
 import org.springframework.data.mongodb.core.mapping.Document;
-import pl.benzo.enzo.cryptomsg.external.dto.KeyDto;
-
 import java.time.LocalDateTime;
-
+import java.util.Date;
 
 @Document(collection = "Msgs")
 @Getter
@@ -24,14 +22,15 @@ public class Msg {
     private String key;
     private LocalDateTime sendAt;
     private LocalDateTime openAt;
-    @Indexed(expireAfterSeconds = 0)
+
+    @Indexed(name = "deleteAt", expireAfterSeconds = 1)
     private LocalDateTime deleteAt;
+
     private boolean isSuccess;
     private int deleteAfter;
 
-    public Msg(String content, LocalDateTime sendAt, int deleteAfter) {
+    public Msg(String content, int deleteAfter) {
         this.content = content;
-        this.sendAt = sendAt;
         this.deleteAfter = deleteAfter;
     }
 

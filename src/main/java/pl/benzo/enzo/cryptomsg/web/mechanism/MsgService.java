@@ -28,7 +28,9 @@ public class MsgService implements MsgApi {
     public CreateMsgResponse createCryptoMessage(CreateMsgRequest createMsgRequest) {
         final CreateMsgMapper createMsgMapper = new CreateMsgMapper();
         Msg tmpMsg = createMsgMapper.requestMapper(createMsgRequest);
-        tmpMsg.setDeleteIn(TimeConverter.addMinutes(LocalDateTime.now(), tmpMsg.getDeleteAfter()));
+        final LocalDateTime timeNow = LocalDateTime.now();
+        tmpMsg.setSendAt(timeNow);
+        tmpMsg.setDeleteAt(TimeConverter.addMinutes(timeNow,tmpMsg.getDeleteAfter()));
         msgRepository.save(tmpMsg);
         return createMsgMapper.responseMapper(tmpMsg);
     }
@@ -44,9 +46,5 @@ public class MsgService implements MsgApi {
           msgRepository.deleteById(msg.getId());
           return readMsgResponse;
       } else throw new IllegalArgumentException("Msg doesnt exist");
-    }
-
-    public void cleanDatabase(){
-        msgRepository.deleteAll();
     }
 }
