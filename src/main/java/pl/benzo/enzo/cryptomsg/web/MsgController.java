@@ -42,6 +42,5 @@ public class MsgController {
         return ResponseEntity
                 .status(HttpStatus.OK)
                 .body(msgApi.readCryptoMessage(readMsgRequest));
-
     }
 }

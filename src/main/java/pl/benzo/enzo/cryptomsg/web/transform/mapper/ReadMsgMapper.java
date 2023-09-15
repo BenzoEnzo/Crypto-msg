@@ -1,9 +1,7 @@
 package pl.benzo.enzo.cryptomsg.web.transform.mapper;
 
 import pl.benzo.enzo.cryptomsg.web.mechanism.Msg;
-import pl.benzo.enzo.cryptomsg.web.transform.dto.request.CreateMsgRequest;
 import pl.benzo.enzo.cryptomsg.web.transform.dto.request.ReadMsgRequest;
-import pl.benzo.enzo.cryptomsg.web.transform.dto.response.CreateMsgResponse;
 import pl.benzo.enzo.cryptomsg.web.transform.dto.response.ReadMsgResponse;
 
 public class ReadMsgMapper implements Mapper<ReadMsgRequest, ReadMsgResponse> {

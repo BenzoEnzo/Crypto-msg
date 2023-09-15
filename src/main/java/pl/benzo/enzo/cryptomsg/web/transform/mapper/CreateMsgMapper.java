@@ -4,8 +4,6 @@ import pl.benzo.enzo.cryptomsg.web.mechanism.Msg;
 import pl.benzo.enzo.cryptomsg.web.transform.dto.request.CreateMsgRequest;
 import pl.benzo.enzo.cryptomsg.web.transform.dto.response.CreateMsgResponse;
 
-import java.time.LocalDateTime;
-
 public class CreateMsgMapper implements Mapper<CreateMsgRequest,CreateMsgResponse> {
 
     @Override
