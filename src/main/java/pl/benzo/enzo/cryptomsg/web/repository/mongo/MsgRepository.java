@@ -5,11 +5,10 @@ import org.springframework.data.mongodb.core.query.Query;
 import org.springframework.data.mongodb.core.query.Criteria;
 import org.springframework.stereotype.Repository;
 import pl.benzo.enzo.cryptomsg.web.model.Msg;
-import pl.benzo.enzo.cryptomsg.web.repository.CrudRepository;
+import pl.benzo.enzo.cryptomsg.web.repository.crud.CrudRepository;
 
 import java.util.List;
 import java.util.Optional;
-
 @Repository
 public class MsgRepository implements CrudRepository {
 
