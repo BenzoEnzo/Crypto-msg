@@ -12,7 +12,7 @@ import org.mockito.junit.jupiter.MockitoExtension;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import pl.benzo.enzo.cryptomsg.web.model.Msg;
-import pl.benzo.enzo.cryptomsg.web.repository.mongo.MsgRepository;
+import pl.benzo.enzo.cryptomsg.web.repository.mongo.MsgMongoRepository;
 import pl.benzo.enzo.cryptomsg.web.service.MsgService;
 
 import java.util.Collections;
@@ -27,7 +27,7 @@ public class ServiceTests {
     private static final Logger logger = LoggerFactory.getLogger(ServiceTests.class);
 
     @Mock
-    private MsgRepository msgRepository;
+    private MsgMongoRepository msgRepository;
 
     @InjectMocks
     private MsgService msgService;

@@ -1,28 +1,27 @@
 package pl.benzo.enzo.cryptomsg.web.repository.mongo;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Profile;
 import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.data.mongodb.core.query.Query;
 import org.springframework.data.mongodb.core.query.Criteria;
 import org.springframework.stereotype.Repository;
 import pl.benzo.enzo.cryptomsg.web.model.Msg;
-import pl.benzo.enzo.cryptomsg.web.repository.crud.CrudRepository;
+import pl.benzo.enzo.cryptomsg.web.repository.crud.ImplBaseRepository;
 
 import java.util.List;
 import java.util.Optional;
-@Repository("integrationRepository")
+
+@Repository
 @Profile("integration")
-public class MsgRepository implements CrudRepository {
+public class MsgMongoRepository implements ImplBaseRepository {
 
-    private final MongoTemplate mongoTemplate;
-
-    public MsgRepository(MongoTemplate mongoTemplate) {
-        this.mongoTemplate = mongoTemplate;
-    }
+    @Autowired
+    private MongoTemplate mongoTemplate;
 
     @Override
-    public Msg save(Msg msg) {
-        return mongoTemplate.save(msg);
+    public void save(Msg msg) {
+        mongoTemplate.save(msg);
     }
 
     @Override

@@ -2,31 +2,28 @@ package pl.benzo.enzo.cryptomsg.web.repository.h2;
 
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.TypedQuery;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Repository;
 import pl.benzo.enzo.cryptomsg.web.model.Msg;
-import pl.benzo.enzo.cryptomsg.web.repository.crud.CrudRepository;
+import pl.benzo.enzo.cryptomsg.web.repository.crud.ImplBaseRepository;
 
 import java.util.List;
 import java.util.Optional;
 
-@Repository("atomRepository")
+@Repository
 @Profile("atom")
-public class MsgRepository implements CrudRepository {
+public class MsgJpaRepository implements ImplBaseRepository {
 
-    private final EntityManager entityManager;
-
-    public MsgRepository(EntityManager entityManager) {
-        this.entityManager = entityManager;
-    }
+    @Autowired
+    private EntityManager entityManager;
 
     @Override
-    public Msg save(Msg msg) {
+    public void save(Msg msg) {
         if (msg.getId() == null) {
             entityManager.persist(msg);
-            return msg;
         } else {
-            return entityManager.merge(msg);
+            entityManager.merge(msg);
         }
     }
 
