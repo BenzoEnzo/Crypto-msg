@@ -1,7 +1,7 @@
 package pl.benzo.enzo.cryptomsg.web.service;
 
-
 import org.springframework.stereotype.Service;
+
 import pl.benzo.enzo.cryptomsg.util.TimeConverter;
 import pl.benzo.enzo.cryptomsg.web.MsgApi;
 import pl.benzo.enzo.cryptomsg.web.model.Msg;
