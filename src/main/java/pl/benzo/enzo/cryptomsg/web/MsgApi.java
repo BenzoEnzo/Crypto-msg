@@ -1,4 +1,4 @@
-package pl.benzo.enzo.cryptomsg.web.mechanism;
+package pl.benzo.enzo.cryptomsg.web;
 
 import pl.benzo.enzo.cryptomsg.web.model.Msg;
 import pl.benzo.enzo.cryptomsg.web.model.dto.request.CreateMsgRequest;
