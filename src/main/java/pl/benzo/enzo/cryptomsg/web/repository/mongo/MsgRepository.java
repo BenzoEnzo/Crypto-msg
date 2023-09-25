@@ -1,5 +1,6 @@
 package pl.benzo.enzo.cryptomsg.web.repository.mongo;
 
+import org.springframework.context.annotation.Profile;
 import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.data.mongodb.core.query.Query;
 import org.springframework.data.mongodb.core.query.Criteria;
@@ -10,8 +11,8 @@ import pl.benzo.enzo.cryptomsg.web.repository.crud.CrudRepository;
 import java.util.List;
 import java.util.Optional;
 @Repository("integrationRepository")
+@Profile("integration")
 public class MsgRepository implements CrudRepository {
-
 
     private final MongoTemplate mongoTemplate;
 

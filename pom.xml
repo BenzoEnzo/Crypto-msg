@@ -13,7 +13,23 @@
 	<version>0.0.1-SNAPSHOT</version>
 	<name>CryptoMsg</name>
 	<description>CryptoMsg</description>
+	<profiles>
+		<profile>
+			<id>atom</id>
+			<properties>
+				<spring.profiles.active>atom</spring.profiles.active>
+			</properties>
+		</profile>
+		<profile>
+			<id>integration</id>
+			<properties>
+				<spring.profiles.active>integration</spring.profiles.active>
+			</properties>
+		</profile>
+	</profiles>
+
 	<dependencies>
+
 
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
