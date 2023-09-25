@@ -1,6 +1,5 @@
 package pl.benzo.enzo.cryptomsg.web.repository.mongo;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Profile;
 import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.data.mongodb.core.query.Query;
@@ -16,8 +15,11 @@ import java.util.Optional;
 @Profile("integration")
 public class MsgMongoRepository implements ImplBaseRepository {
 
-    @Autowired
-    private MongoTemplate mongoTemplate;
+    private final MongoTemplate mongoTemplate;
+
+    public MsgMongoRepository(MongoTemplate mongoTemplate) {
+        this.mongoTemplate = mongoTemplate;
+    }
 
     @Override
     public void save(Msg msg) {
