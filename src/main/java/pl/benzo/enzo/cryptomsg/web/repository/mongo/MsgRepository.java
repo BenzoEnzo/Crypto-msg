@@ -9,7 +9,7 @@ import pl.benzo.enzo.cryptomsg.web.repository.crud.CrudRepository;
 
 import java.util.List;
 import java.util.Optional;
-@Repository
+@Repository("integrationRepository")
 public class MsgRepository implements CrudRepository {
 
 

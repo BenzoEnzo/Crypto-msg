@@ -2,13 +2,14 @@ package pl.benzo.enzo.cryptomsg.web.repository.h2;
 
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.TypedQuery;
+import org.springframework.stereotype.Repository;
 import pl.benzo.enzo.cryptomsg.web.model.Msg;
 import pl.benzo.enzo.cryptomsg.web.repository.crud.CrudRepository;
 
 import java.util.List;
 import java.util.Optional;
 
-
+@Repository("atomRepository")
 public class MsgRepository implements CrudRepository {
 
     private final EntityManager entityManager;
