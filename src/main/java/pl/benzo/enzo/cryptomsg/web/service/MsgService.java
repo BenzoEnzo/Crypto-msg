@@ -11,7 +11,7 @@ import pl.benzo.enzo.cryptomsg.web.model.dto.response.CreateMsgResponse;
 import pl.benzo.enzo.cryptomsg.web.model.dto.response.ReadMsgResponse;
 import pl.benzo.enzo.cryptomsg.web.model.mapper.CreateMsgMapper;
 import pl.benzo.enzo.cryptomsg.web.model.mapper.ReadMsgMapper;
-import pl.benzo.enzo.cryptomsg.web.repository.MsgRepository;
+import pl.benzo.enzo.cryptomsg.web.repository.mongo.MsgRepository;
 
 import java.time.LocalDateTime;
 import java.util.List;

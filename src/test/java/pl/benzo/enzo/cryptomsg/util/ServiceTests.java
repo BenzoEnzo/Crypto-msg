@@ -12,7 +12,7 @@ import org.mockito.junit.jupiter.MockitoExtension;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import pl.benzo.enzo.cryptomsg.web.model.Msg;
-import pl.benzo.enzo.cryptomsg.web.repository.MsgRepository;
+import pl.benzo.enzo.cryptomsg.web.repository.mongo.MsgRepository;
 import pl.benzo.enzo.cryptomsg.web.service.MsgService;
 
 import java.util.Collections;
