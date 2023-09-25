@@ -1,11 +1,9 @@
 package pl.benzo.enzo.cryptomsg.web;
 
-
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import pl.benzo.enzo.cryptomsg.web.mechanism.MsgApi;
 import pl.benzo.enzo.cryptomsg.web.model.Msg;
 import pl.benzo.enzo.cryptomsg.web.model.dto.request.CreateMsgRequest;
 import pl.benzo.enzo.cryptomsg.web.model.dto.response.CreateMsgResponse;
