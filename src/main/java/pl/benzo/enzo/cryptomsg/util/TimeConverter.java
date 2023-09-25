@@ -1,4 +1,4 @@
-package pl.benzo.enzo.cryptomsg.web.conditions;
+package pl.benzo.enzo.cryptomsg.util;
 import java.time.LocalDateTime;
 
 public final class TimeConverter {

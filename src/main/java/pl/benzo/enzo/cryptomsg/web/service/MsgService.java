@@ -1,14 +1,17 @@
-package pl.benzo.enzo.cryptomsg.web.mechanism;
+package pl.benzo.enzo.cryptomsg.web.service;
 
 
 import org.springframework.stereotype.Service;
-import pl.benzo.enzo.cryptomsg.web.conditions.TimeConverter;
-import pl.benzo.enzo.cryptomsg.web.transform.dto.request.CreateMsgRequest;
-import pl.benzo.enzo.cryptomsg.web.transform.dto.request.ReadMsgRequest;
-import pl.benzo.enzo.cryptomsg.web.transform.dto.response.CreateMsgResponse;
-import pl.benzo.enzo.cryptomsg.web.transform.dto.response.ReadMsgResponse;
-import pl.benzo.enzo.cryptomsg.web.transform.mapper.CreateMsgMapper;
-import pl.benzo.enzo.cryptomsg.web.transform.mapper.ReadMsgMapper;
+import pl.benzo.enzo.cryptomsg.util.TimeConverter;
+import pl.benzo.enzo.cryptomsg.web.mechanism.MsgApi;
+import pl.benzo.enzo.cryptomsg.web.model.Msg;
+import pl.benzo.enzo.cryptomsg.web.model.dto.request.CreateMsgRequest;
+import pl.benzo.enzo.cryptomsg.web.model.dto.request.ReadMsgRequest;
+import pl.benzo.enzo.cryptomsg.web.model.dto.response.CreateMsgResponse;
+import pl.benzo.enzo.cryptomsg.web.model.dto.response.ReadMsgResponse;
+import pl.benzo.enzo.cryptomsg.web.model.mapper.CreateMsgMapper;
+import pl.benzo.enzo.cryptomsg.web.model.mapper.ReadMsgMapper;
+import pl.benzo.enzo.cryptomsg.web.repository.MsgRepository;
 
 import java.time.LocalDateTime;
 import java.util.List;

@@ -1,4 +1,4 @@
-package pl.benzo.enzo.cryptomsg.web.transform.dto.request;
+package pl.benzo.enzo.cryptomsg.web.model.dto.request;
 
 
 public record CreateMsgRequest(String content, int deleteAfterTime) {

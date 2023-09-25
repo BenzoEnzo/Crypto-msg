@@ -1,8 +1,8 @@
-package pl.benzo.enzo.cryptomsg.web.transform.mapper;
+package pl.benzo.enzo.cryptomsg.web.model.mapper;
 
-import pl.benzo.enzo.cryptomsg.web.mechanism.Msg;
-import pl.benzo.enzo.cryptomsg.web.transform.dto.request.ReadMsgRequest;
-import pl.benzo.enzo.cryptomsg.web.transform.dto.response.ReadMsgResponse;
+import pl.benzo.enzo.cryptomsg.web.model.Msg;
+import pl.benzo.enzo.cryptomsg.web.model.dto.request.ReadMsgRequest;
+import pl.benzo.enzo.cryptomsg.web.model.dto.response.ReadMsgResponse;
 
 public class ReadMsgMapper implements Mapper<ReadMsgRequest, ReadMsgResponse> {
 
