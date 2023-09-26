@@ -28,7 +28,7 @@ public class MongoMsg extends Msg {
         setDeleteAt(msg.getDeleteAt());
         setSuccess(msg.isSuccess());
         setDeleteAfter(msg.getDeleteAfter());
-        this.deleteAtMongo = msg.getDeleteAt();  // copy value to the indexed field
+        this.deleteAtMongo = msg.getDeleteAt();
     }
 
     @Override
