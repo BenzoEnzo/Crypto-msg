@@ -25,7 +25,6 @@ public class MongoMsg extends Msg {
         setSendAt(msg.getSendAt());
         setOpenAt(msg.getOpenAt());
         setDeleteAt(msg.getDeleteAt());
-        setSuccess(msg.isSuccess());
         setDeleteAfter(msg.getDeleteAfter());
         this.deleteAtMongo = msg.getDeleteAt();
     }

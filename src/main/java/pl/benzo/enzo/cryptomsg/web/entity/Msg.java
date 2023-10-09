@@ -17,13 +17,14 @@ public class Msg {
     private LocalDateTime sendAt;
     private LocalDateTime openAt;
     private LocalDateTime deleteAt;
-    private boolean isSuccess;
     private int deleteAfter;
 
     public Msg(){}
 
-    public Msg(String content, int deleteAfter) {
+    public Msg(String content, int deleteAfter, LocalDateTime deleteAt, LocalDateTime sendAt) {
         this.content = content;
         this.deleteAfter = deleteAfter;
+        this.deleteAt = deleteAt;
+        this.sendAt = sendAt;
     }
 }
