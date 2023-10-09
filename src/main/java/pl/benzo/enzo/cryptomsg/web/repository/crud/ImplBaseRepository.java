@@ -1,7 +1,7 @@
 package pl.benzo.enzo.cryptomsg.web.repository.crud;
 
 
-import pl.benzo.enzo.cryptomsg.web.model.Msg;
+import pl.benzo.enzo.cryptomsg.web.entity.Msg;
 
 import java.util.List;
 import java.util.Optional;

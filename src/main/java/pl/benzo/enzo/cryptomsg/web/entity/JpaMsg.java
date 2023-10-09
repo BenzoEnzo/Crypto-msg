@@ -1,8 +1,8 @@
-package pl.benzo.enzo.cryptomsg.web.model.entity;
+package pl.benzo.enzo.cryptomsg.web.entity;
 
 import jakarta.persistence.*;
 import lombok.*;
-import pl.benzo.enzo.cryptomsg.web.model.Msg;
+
 import java.time.LocalDateTime;
 
 
@@ -25,8 +25,6 @@ public class JpaMsg extends Msg {
     private LocalDateTime openAt;
     @Column(name = "deleteAt_msg")
     private LocalDateTime deleteAt;
-    @Column(name = "isSuccess_msg")
-    private boolean isSuccess;
     @Column(name = "deleteAfter_msg")
     private int deleteAfter;
 
@@ -37,7 +35,6 @@ public class JpaMsg extends Msg {
         this.setSendAt(msg.getSendAt());
         this.setOpenAt(msg.getOpenAt());
         this.setDeleteAt(msg.getDeleteAt());
-        this.setSuccess(msg.isSuccess());
         this.setDeleteAfter(msg.getDeleteAfter());
     }
 
@@ -70,11 +67,6 @@ public class JpaMsg extends Msg {
     @Override
     public LocalDateTime getDeleteAt() {
         return deleteAt;
-    }
-
-    @Override
-    public boolean isSuccess() {
-        return isSuccess;
     }
 
     @Override
