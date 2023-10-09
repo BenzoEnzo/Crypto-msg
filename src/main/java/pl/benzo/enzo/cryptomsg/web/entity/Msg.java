@@ -27,4 +27,8 @@ public class Msg {
         this.deleteAt = deleteAt;
         this.sendAt = sendAt;
     }
+
+    public Msg(String content){
+        this.content = content;
+    }
 }
