@@ -1,10 +1,10 @@
 package pl.benzo.enzo.cryptomsg.web;
 
-import pl.benzo.enzo.cryptomsg.web.model.Msg;
-import pl.benzo.enzo.cryptomsg.web.model.dto.request.CreateMsgRequest;
-import pl.benzo.enzo.cryptomsg.web.model.dto.request.ReadMsgRequest;
-import pl.benzo.enzo.cryptomsg.web.model.dto.response.CreateMsgResponse;
-import pl.benzo.enzo.cryptomsg.web.model.dto.response.ReadMsgResponse;
+import pl.benzo.enzo.cryptomsg.web.entity.Msg;
+import pl.benzo.enzo.cryptomsg.web.dto.request.CreateMsgRequest;
+import pl.benzo.enzo.cryptomsg.web.dto.request.ReadMsgRequest;
+import pl.benzo.enzo.cryptomsg.web.dto.response.CreateMsgResponse;
+import pl.benzo.enzo.cryptomsg.web.dto.response.ReadMsgResponse;
 
 import java.util.List;
 

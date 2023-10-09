@@ -1,4 +1,4 @@
-package pl.benzo.enzo.cryptomsg.web.model;
+package pl.benzo.enzo.cryptomsg.web.entity;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

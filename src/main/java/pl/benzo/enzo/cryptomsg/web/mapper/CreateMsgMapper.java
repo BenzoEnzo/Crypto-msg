@@ -1,8 +1,8 @@
-package pl.benzo.enzo.cryptomsg.web.model.mapper;
+package pl.benzo.enzo.cryptomsg.web.mapper;
 
-import pl.benzo.enzo.cryptomsg.web.model.Msg;
-import pl.benzo.enzo.cryptomsg.web.model.dto.request.CreateMsgRequest;
-import pl.benzo.enzo.cryptomsg.web.model.dto.response.CreateMsgResponse;
+import pl.benzo.enzo.cryptomsg.web.entity.Msg;
+import pl.benzo.enzo.cryptomsg.web.dto.request.CreateMsgRequest;
+import pl.benzo.enzo.cryptomsg.web.dto.response.CreateMsgResponse;
 
 public class CreateMsgMapper implements Mapper<CreateMsgRequest,CreateMsgResponse> {
 

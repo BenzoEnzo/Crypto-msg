@@ -1,8 +1,8 @@
-package pl.benzo.enzo.cryptomsg.web.model.entity;
+package pl.benzo.enzo.cryptomsg.web.entity;
 
 import jakarta.persistence.*;
 import lombok.*;
-import pl.benzo.enzo.cryptomsg.web.model.Msg;
+
 import java.time.LocalDateTime;
 
 

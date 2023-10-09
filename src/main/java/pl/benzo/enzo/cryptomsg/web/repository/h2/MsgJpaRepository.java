@@ -8,8 +8,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Repository;
 import pl.benzo.enzo.cryptomsg.util.IdGenerator;
-import pl.benzo.enzo.cryptomsg.web.model.Msg;
-import pl.benzo.enzo.cryptomsg.web.model.entity.JpaMsg;
+import pl.benzo.enzo.cryptomsg.web.entity.Msg;
+import pl.benzo.enzo.cryptomsg.web.entity.JpaMsg;
 import pl.benzo.enzo.cryptomsg.web.repository.crud.ImplBaseRepository;
 
 import java.util.List;
