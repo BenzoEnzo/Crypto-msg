@@ -17,5 +17,3 @@ Dla wersji 0.0.1 jest to wydanie produkcyjne.
 
 RELEASE 0.0.2 -
 Optymalizacja kodu oraz struktury projektowej.
-Stworzenie dodatkowego serwisu, który implementuje 
-podstawowe działania na bazie danych.
